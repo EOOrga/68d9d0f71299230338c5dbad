@@ -1,0 +1,15 @@
+App name
+GARON DENISE
+
+Short description
+Track leads, purchase requests, supply orders, and containers in one local operations workspace.
+
+Full description
+GARON DENISE helps business teams keep daily operations moving without switching between paper notes and scattered spreadsheets. The app organizes lead follow-ups, procurement requests, supply orders, and container movements in a focused Android workspace.
+
+Create records with owners, priorities, due dates, values, locations, progress, and notes. Review active work from the dashboard, open category-specific lists, update statuses, and keep preference settings stored locally on the device.
+
+The app works without accounts, cloud sync, analytics, ads, or external service connections.
+
+Category
+Business

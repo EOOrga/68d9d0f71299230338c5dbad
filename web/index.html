@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GARON DENISE is a local Android operations app for lead, procurement, supply, and container tracking.">
+  <title>GARON DENISE</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+  <style>
+    :root {
+      --primary: #27374f;
+      --secondary: #b58632;
+      --tertiary: #587a82;
+      --ink: #17202c;
+      --muted: #5d6673;
+      --paper: #f7f5ef;
+      --surface: #ffffff;
+      --line: rgba(39, 55, 79, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 4;
+      border-bottom: 1px solid var(--line);
+      background: rgba(247, 245, 239, 0.94);
+      backdrop-filter: blur(14px);
+    }
+
+    nav,
+    .section,
+    .hero-inner {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 68px;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--primary);
+      font-weight: 800;
+      letter-spacing: 0;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .nav-links a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .hero {
+      min-height: 82vh;
+      display: grid;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(23, 32, 44, 0.86), rgba(23, 32, 44, 0.42)),
+        url("featured.png") center / cover no-repeat;
+      color: white;
+    }
+
+    .hero h1 {
+      width: min(760px, 100%);
+      margin: 0 0 16px;
+      font-size: clamp(42px, 8vw, 86px);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      width: min(620px, 100%);
+      margin: 0 0 26px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 19px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 0 18px;
+      color: white;
+      background: var(--secondary);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      border-color: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .section {
+      padding: 58px 0;
+    }
+
+    .section h2 {
+      margin: 0 0 14px;
+      color: var(--primary);
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .section > p {
+      max-width: 720px;
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      min-height: 170px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    .card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--primary);
+      font-size: 17px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .panel {
+      border-radius: 8px;
+      background: var(--primary);
+      color: white;
+      padding: 24px;
+    }
+
+    .panel h3 {
+      margin: 0 0 14px;
+      font-size: 28px;
+      letter-spacing: 0;
+    }
+
+    .panel ul {
+      margin: 0;
+      padding-left: 20px;
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    .steps {
+      display: grid;
+      gap: 12px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+    }
+
+    .step span {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border-radius: 8px;
+      background: rgba(181, 134, 50, 0.16);
+      color: var(--primary);
+      font-weight: 900;
+    }
+
+    .step strong {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 3px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 28px 0 42px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 840px) {
+      .nav-links {
+        display: none;
+      }
+
+      .grid,
+      .workflow {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 78vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Primary">
+      <a class="brand" href="#top">
+        <img src="favicon.png" alt="">
+        <span>GARON DENISE</span>
+      </a>
+      <div class="nav-links">
+        <a href="#work">Workflows</a>
+        <a href="#process">Process</a>
+        <a href="mailto:support@garondenise.com">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <h1 id="hero-title">GARON DENISE</h1>
+        <p>Operations teams can manage leads, purchase requests, supply ordering, and container status from one local Android workspace.</p>
+        <div class="button-row">
+          <a class="button" href="mailto:support@garondenise.com">Contact support</a>
+          <a class="button secondary" href="#work">View workflows</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="section">
+      <h2>Focused daily operations</h2>
+      <p>The Android app is built for repeat operational work, with concise records, status updates, priority flags, and local preferences that stay on the device.</p>
+      <div class="grid">
+        <article class="card">
+          <strong>Lead management</strong>
+          <p>Track partner follow-ups, proposal status, pipeline value, owners, and due dates.</p>
+        </article>
+        <article class="card">
+          <strong>Procurement requests</strong>
+          <p>Record supplier needs, approvals, order progress, quantities, and next actions.</p>
+        </article>
+        <article class="card">
+          <strong>Supply ordering</strong>
+          <p>Keep internal requests visible from intake through queued and fulfilled stages.</p>
+        </article>
+        <article class="card">
+          <strong>Container tracking</strong>
+          <p>Follow route, port, customs, delivery, and documentation notes for each shipment.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="process" class="section workflow">
+      <div class="panel">
+        <h3>Local-first by design</h3>
+        <ul>
+          <li>No account registration</li>
+          <li>No analytics or advertising identifiers</li>
+          <li>No cloud sync or external service connection</li>
+          <li>No Android runtime permissions</li>
+        </ul>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span>1</span>
+          <div>
+            <strong>Create the record</strong>
+            <p>Choose a lead, procurement, supply, or container workflow and capture the working details.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span>2</span>
+          <div>
+            <strong>Update status</strong>
+            <p>Move work through the right status path and keep progress visible for the team.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span>3</span>
+          <div>
+            <strong>Review by category</strong>
+            <p>Use the dashboard and category lists to find what needs attention next.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="section" style="padding: 0;">
+      GARON DENISE - support@garondenise.com
+    </div>
+  </footer>
+</body>
+</html>
