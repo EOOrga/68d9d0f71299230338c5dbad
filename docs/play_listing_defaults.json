@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "applications": {
+    "com.garondenise.operations": {
+      "title": "GARON DENISE",
+      "short_description": "Track leads, purchase requests, supply orders, and containers in one local...",
+      "full_description": "GARON DENISE helps business teams keep daily operations moving without switching between paper notes and scattered spreadsheets. The app organizes lead follow-ups, procurement requests, supply orders, and container movements in a focused Android workspace.\n\nCreate records with owners, priorities, due dates, values, locations, progress, and notes. Review active work from the dashboard, open category-specific lists, update statuses, and keep preference settings stored locally on the device.\n\nThe app works without accounts, cloud sync, analytics, ads, or external service connections.",
+      "source_screenshots": [
+        "docs/screens/1.png",
+        "docs/screens/2.png",
+        "docs/screens/3.png"
+      ],
+      "generated_from": "existing repository listing metadata and README",
+      "generated_at": "2026-10-02T21:21:05.803022+00:00"
+    }
+  }
+}
