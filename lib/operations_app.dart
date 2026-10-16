@@ -8,9 +8,9 @@ import 'operations_store.dart';
 const _appName = 'GARON DENISE';
 const _supportEmail = 'support@garondenise.com';
 
-const _brandPrimary = Color(0xFF27374F);
-const _brandSecondary = Color(0xFFB58632);
-const _brandTertiary = Color(0xFF587A82);
+const _brandPrimary = Color(0xFF26F75E);
+const _brandSecondary = Color(0xFF26F7C6);
+const _brandTertiary = Color(0xFF26BFF7);
 const _brandSurface = Color(0xFFF7F5EF);
 
 class GaronDeniseApp extends StatefulWidget {
@@ -126,7 +126,7 @@ class _OperationsHomeState extends State<OperationsHome> {
           ),
           WorkListScreen(
             controller: widget.controller,
-            title: 'Lead pipeline',
+            title: 'GARON DENISE',
             types: const [WorkType.lead],
             emptyLabel: 'No leads are waiting.',
             onAddItem: () => _openForm(initialType: WorkType.lead),
