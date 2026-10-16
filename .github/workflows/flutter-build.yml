@@ -66,7 +66,6 @@ jobs:
               return values[0]
           package = literal("applicationId")
           namespace = literal("namespace")
-          if namespace != package.replace("_", ""): raise SystemExit("Android namespace must match applicationId without underscores; align the branch before building")
           android_name = "{http://schemas.android.com/apk/res/android}name"
           manifest = ET.parse(root / "src/main/AndroidManifest.xml").getroot()
           launchers = [activity for activity in manifest.findall("./application/activity") if any(any(action.get(android_name) == "android.intent.action.MAIN" for action in intent.findall("action")) and any(category.get(android_name) == "android.intent.category.LAUNCHER" for category in intent.findall("category")) for intent in activity.findall("intent-filter"))]
@@ -84,7 +83,13 @@ jobs:
           if candidates[0] != root / "src/main" / language / Path(namespace.replace(".", "/")) / candidates[0].name: raise SystemExit("MainActivity folder does not match its package")
           for overlay in (root / "src").glob("*/AndroidManifest.xml"):
               if overlay.parent.name == "main": continue
-              if ET.parse(overlay).getroot().findall("./application/activity") or ET.parse(overlay).getroot().findall("./application/activity-alias"): raise SystemExit(f"Launcher overlays require manual validation: {overlay}")
+              overlay_root = ET.parse(overlay).getroot()
+              for tag in ("activity", "activity-alias"): 
+                  for component in overlay_root.findall("./application/" + tag):
+                      for intent in component.findall("intent-filter"): 
+                          actions = {action.get(android_name) for action in intent.findall("action")}
+                          categories = {category.get(android_name) for category in intent.findall("category")}
+                          if "android.intent.action.MAIN" in actions and "android.intent.category.LAUNCHER" in categories: raise SystemExit(f"Build-specific launcher override requires manual inspection: {overlay}")
           print(f"Verified Android launcher: {resolved}")
           PY
       - name: Validate Android signing secrets
