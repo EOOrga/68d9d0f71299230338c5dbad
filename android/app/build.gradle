@@ -30,7 +30,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.garondenise.operations"
+        applicationId "com.garondenise.manikhn"
         minSdk flutter.minSdkVersion
         targetSdk flutter.targetSdkVersion
         versionCode flutter.versionCode
